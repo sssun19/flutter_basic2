@@ -1,10 +1,33 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(
+    MaterialApp(
+      //flutter 로 앱을 만들 때 가장 기본이 되는 앱 단위
       home: Scaffold(
-    body: TestWidget(),
-  ),),); //flutter 로 앱을 만들 때 가장 기본이 되는 앱 단위
+        appBar: AppBar(
+          title: Text('This is App bar'),
+          centerTitle: false,
+          actions: [
+            IconButton(
+              icon: Icon(Icons.home),
+              onPressed: () {
+                print('Tab!');
+              },
+            ),
+            Icon(Icons.play_arrow),
+          ],
+        ),
+        body: TestWidget(),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.bug_report),
+          onPressed: () {
+            print('Tab! FAB!');
+          },
+        ),
+      ),
+    ),
+  );
 }
 
 class TestWidget extends StatelessWidget {
