@@ -17,7 +17,7 @@ class TestWidget extends StatelessWidget {
         child: Text(
           'Hello, Flutter',
           style: TextStyle(
-            fontSize: 40,
+            fontSize: 50,
             color: Colors.black,
           ),
         ),
