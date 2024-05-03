@@ -25,30 +25,60 @@ class Body extends StatelessWidget {
     return Stack(
       // 맨 마지막 위젯이 화면상 가장 가까이 위치
       children: [
-        Container(
-          width: 400,
-          height: 400,
-          color: Colors.black,
-        ),
-        Container(
-          width: 300,
-          height: 300,
-          color: Colors.red,
-        ),
-        Container(
-          width: 200,
-          height: 200,
-          color: Colors.blue,
-        ),
-        // Positioned( // 스택 쌓을 때 포지션 위치 조정하는 위젯
+        // Container(
+        //   width: 400,
+        //   height: 400,
+        //   color: Colors.black,
+        // ),
+        // Container(
+        //   width: 300,
+        //   height: 300,
+        //   color: Colors.red,
+        // ),
+        // Container(
+        //   width: 200,
+        //   height: 200,
+        //   color: Colors.blue,
+        // ),
+        // // Positioned( // 스택 쌓을 때 포지션 위치 조정하는 위젯
+        // Align(
+        //   //Align 특이점 : 위젯의 기본 사이즈를 벗어날 수 있다.
+        //   alignment: Alignment(0.5, 0.5), // 대칭은 -로
+        //   child: Container(
+        //     width: 100,
+        //     height: 100,
+        //     color: Colors.green,
+        //     margin: const EdgeInsets.only(left: 20),
+        //   ),
+        // ),
+
         Align(
-          //Align 특이점 : 위젯의 기본 사이즈를 벗어날 수 있다.
-          alignment: Alignment(0.5, 0.5), // 대칭은 -로
+          alignment: Alignment.center,
           child: Container(
-            width: 100,
-            height: 100,
-            color: Colors.green,
-            margin: const EdgeInsets.only(left: 20),
+            width: 300,
+            height: 300,
+            decoration: BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.circular(150),
+            ),
+          ),
+        ),
+        Align(
+          alignment: Alignment.center,
+          child: Container(
+            width: 280,
+            height: 280,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(140),
+            ),
+          ),
+        ),
+        Align(
+          alignment: Alignment.center,
+          child: Text(
+            'Count 0',
+            style: TextStyle(color: Colors.red, fontSize: 32),
           ),
         ),
       ],
