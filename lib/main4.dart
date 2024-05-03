@@ -43,7 +43,7 @@ class Body extends StatelessWidget {
         // Positioned( // 스택 쌓을 때 포지션 위치 조정하는 위젯
         Align(
           //Align 특이점 : 위젯의 기본 사이즈를 벗어날 수 있다.
-          alignment: Alignment(0.5, -0.5),
+          alignment: Alignment(0.5, 0.5), // 대칭은 -로
           child: Container(
             width: 100,
             height: 100,
