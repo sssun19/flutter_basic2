@@ -123,10 +123,18 @@ class _TestRadioButtonState extends State<TestRadioButton> {
             }
           }),
         ),
-        Radio<TestRadioValue>(
-          value: TestRadioValue.test3,
-          groupValue: selectValue,
-          onChanged: (value) => setState(() => selectValue = value),
+        ListTile(
+          leading: Radio<TestRadioValue>(
+            value: TestRadioValue.test3,
+            groupValue: selectValue,
+            onChanged: (value) => setState(() => selectValue = value),
+          ),
+          title: Text('남자'),
+          onTap: () => setState(() {
+            if (selectValue != TestRadioValue.test3) {
+              selectValue = TestRadioValue.test3;
+            }
+          }),
         ),
       ],
     );
