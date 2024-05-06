@@ -30,6 +30,7 @@ class Body extends StatelessWidget {
         TestRadioButton(),
         TestSlider(),
         TestSwitch(),
+        TestPopupMenu(),
       ],
     );
   }
@@ -86,56 +87,56 @@ class TestRadioButton extends StatefulWidget {
   State<TestRadioButton> createState() => _TestRadioButtonState();
 }
 
-enum TestRadioValue {
+enum TestValue {
   test1,
   test2,
   test3;
 }
 
 class _TestRadioButtonState extends State<TestRadioButton> {
-  TestRadioValue? selectValue;
+  TestValue? selectValue;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         ListTile(
-          leading: Radio<TestRadioValue>(
-            value: TestRadioValue.test1,
+          leading: Radio<TestValue>(
+            value: TestValue.test1,
             groupValue: selectValue,
             onChanged: (value) => setState(() => selectValue = value),
           ),
-          title: Text(TestRadioValue.test1.name),
+          title: Text(TestValue.test1.name),
           onTap: () => setState(() {
-            if (selectValue != TestRadioValue.test1) {
-              selectValue = TestRadioValue.test1;
+            if (selectValue != TestValue.test1) {
+              selectValue = TestValue.test1;
             }
           }),
         ),
         ListTile(
-          leading: Radio<TestRadioValue>(
-            value: TestRadioValue.test2,
+          leading: Radio<TestValue>(
+            value: TestValue.test2,
             groupValue: selectValue,
             onChanged: (value) => setState(() => selectValue = value),
           ),
           title: Text('여자'),
           onTap: () => setState(() {
-            if (selectValue != TestRadioValue.test2) {
-              selectValue = TestRadioValue.test2;
+            if (selectValue != TestValue.test2) {
+              selectValue = TestValue.test2;
             }
           }),
         ),
         ListTile(
           // 터치 범위 확장 가능
-          leading: Radio<TestRadioValue>(
-            value: TestRadioValue.test3,
+          leading: Radio<TestValue>(
+            value: TestValue.test3,
             groupValue: selectValue,
             onChanged: (value) => setState(() => selectValue = value),
           ),
           title: Text('남자'),
           onTap: () => setState(() {
-            if (selectValue != TestRadioValue.test3) {
-              selectValue = TestRadioValue.test3;
+            if (selectValue != TestValue.test3) {
+              selectValue = TestValue.test3;
             }
           }),
         ),
@@ -195,6 +196,35 @@ class _TestSwitchState extends State<TestSwitch> {
           value: value2,
           onChanged: (newValue) => setState(() => value2 = newValue),
         )
+      ],
+    );
+  }
+}
+
+class TestPopupMenu extends StatefulWidget {
+  const TestPopupMenu({super.key});
+
+  @override
+  State<TestPopupMenu> createState() => _TestPopupMenuState();
+}
+
+class _TestPopupMenuState extends State<TestPopupMenu> {
+  TestValue selectValue = TestValue.test1;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(selectValue.name),
+        PopupMenuButton(
+          itemBuilder: (context) {
+            return TestValue.values
+                .map((value) =>
+                    PopupMenuItem(value: value, child: Text(value.name)))
+                .toList();
+          },
+          onSelected: (newValue) => setState(() => selectValue = newValue),
+        ),
       ],
     );
   }
