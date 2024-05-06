@@ -29,6 +29,7 @@ class Body extends StatelessWidget {
         TestCheckBox(),
         TestRadioButton(),
         TestSlider(),
+        TestSwitch(),
       ],
     );
   }
@@ -100,10 +101,10 @@ class _TestRadioButtonState extends State<TestRadioButton> {
       children: [
         ListTile(
           leading: Radio<TestRadioValue>(
-              value: TestRadioValue.test1,
-              groupValue: selectValue,
-              onChanged: (value) => setState(() => selectValue = value),
-            ),
+            value: TestRadioValue.test1,
+            groupValue: selectValue,
+            onChanged: (value) => setState(() => selectValue = value),
+          ),
           title: Text(TestRadioValue.test1.name),
           onTap: () => setState(() {
             if (selectValue != TestRadioValue.test1) {
@@ -124,7 +125,8 @@ class _TestRadioButtonState extends State<TestRadioButton> {
             }
           }),
         ),
-        ListTile( // 터치 범위 확장 가능
+        ListTile(
+          // 터치 범위 확장 가능
           leading: Radio<TestRadioValue>(
             value: TestRadioValue.test3,
             groupValue: selectValue,
@@ -166,6 +168,33 @@ class _TestSliderState extends State<TestSlider> {
           label: value.round().toString(),
           activeColor: Colors.red,
         ),
+      ],
+    );
+  }
+}
+
+class TestSwitch extends StatefulWidget {
+  const TestSwitch({super.key});
+
+  @override
+  State<TestSwitch> createState() => _TestSwitchState();
+}
+
+class _TestSwitchState extends State<TestSwitch> {
+  bool value = false;
+  bool value2 = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Switch(
+            value: value,
+            onChanged: (newValue) => setState(() => value = newValue)),
+        CupertinoSwitch(
+          value: value2,
+          onChanged: (newValue) => setState(() => value2 = newValue),
+        )
       ],
     );
   }
