@@ -13,7 +13,7 @@ void main() {
           ),
           centerTitle: true,
         ),
-        body: const Body(),
+        body: const Body(), // 더이상 바뀌지 않는 함수는 상수 처리 const
       ),
     ),
   );
