@@ -34,7 +34,7 @@ class _HomeWidgetState extends State<HomeWidget> {
         child: TextButton(
           child: const Text('Go to Page'),
           onPressed: () {
-            Navigator.push(
+            Navigator.push( // pushAndRemoveUntil : 해당 페이지로 이동한 뒤 다시 돌아오지 못함(캐쉬지움, pop불가능) 보통 홈으로 갈 때 이 함수 사용
               context,
               MaterialPageRoute(
                 builder: (context) => const NewPage(),

@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 
 class NewPage extends StatelessWidget {
@@ -60,7 +58,7 @@ class NewPage2 extends StatelessWidget {
             TextButton(
               child: const Text('Go to Home'),
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.popUntil(context, (route) => route.isFirst);
               },
             ),
           ],
