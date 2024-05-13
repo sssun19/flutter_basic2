@@ -5,7 +5,7 @@ import 'package:testflutter/screen/new_page.dart';
 
 void main() {
   runApp(
-    MaterialApp(
+    const MaterialApp(
       home: HomeWidget(),
     ),
   );
