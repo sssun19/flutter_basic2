@@ -1,14 +1,34 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:testflutter/main5.dart';
+import 'package:go_router/go_router.dart';
 import 'package:testflutter/screen/new_page.dart';
 
-
+// PageException 떴던 이유 : go_router 와 dart:js 는 동시에 사용 x
 
 void main() {
   runApp(
-    const MaterialApp(
-      home: HomeWidget(),
+    MaterialApp.router(
+      routerConfig: GoRouter(
+        initialLocation: '/',
+        routes: [
+          GoRoute(
+              path: '/',
+              name: 'home',
+              builder: (context, _) => const HomeWidget()),
+          GoRoute(
+            path: '/new',
+            name: 'new',
+            builder: (context, _) => const NewPage(),
+            // routes: [
+            //   dynamic link
+            // ]
+          ),
+          GoRoute(
+              path: '/new1',
+              name: 'new1',
+              builder: (context, _) => const NewPage2()),
+        ],
+      ),
     ),
   );
 }
@@ -35,14 +55,7 @@ class _HomeWidgetState extends State<HomeWidget> {
       body: Center(
         child: TextButton(
           child: const Text('Go to Page'),
-          onPressed: () {
-            Navigator.push( // pushAndRemoveUntil : 해당 페이지로 이동한 뒤 다시 돌아오지 못함(캐쉬지움, pop불가능) 보통 홈으로 갈 때 이 함수 사용
-              context,
-              MaterialPageRoute(
-                builder: (context) => const NewPage(),
-              ),
-            );
-          },
+          onPressed: () => context.pushNamed('new'),
         ),
       ),
     );
